@@ -5,13 +5,21 @@
 </head>
 <body>
   <div id="root">
-    <ul>
-      <li v-for="name in names" v-text="name">
-      </li>
-    </ul>
+    
+    <h1>All Tasks</h1>
+      <ul>
+        <li v-for="task in tasks">{{ task.description }}<input type="checkbox" v-model="task.completed" ></li>
+      </ul>
+    <h2>Tasks To Do</h2>
+      <ul>
+        <li v-for="task in tasks" v-if="!task.completed" v-text="task.description"></li>
+      </ul>
 
-    <input type="text" v-model="newName">
-    <button @click="addName">Add name</button>
+    <h2>Completed Tasks</h2>
+      <ul>
+        <li v-for="task in tasks" v-if="task.completed" v-text="task.description"></li>
+      </ul>
+
   </div>
 	
   <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.13/vue.js"></script>
@@ -19,20 +27,22 @@
   <script>
 
 
-    new Vue({
+    let app = new Vue({
       el: '#root',
       data: {
-        newName: "",
-        names: ["John", "Joe", "Jill"]
+        tasks: [
+          {description: "Buy new clothes", completed: true },
+          {description: "Go to the shops", completed: false },
+          {description: "Change the car", completed: false },
+          {description: "Cook dinner", completed: false },
+          {description: "Change nappies", completed: false },
+        ]
       },
 
-      methods: {
-        addName() {
-          this.names.push(this.newName);
-          this.newName = "";
-        }
+      computed: {
+
       }
-    })
+    });
 
   </script>
 </body>
