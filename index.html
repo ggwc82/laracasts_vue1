@@ -10,6 +10,7 @@
       <ul>
         <li v-for="task in tasks">{{ task.description }}<input type="checkbox" v-model="task.completed" ></li>
       </ul>
+      <input type="text" v-model="newTask" @keyup.enter="addTask">
     <h2>Tasks To Do</h2>
       <ul>
         <li v-for="task in tasks" v-if="!task.completed" v-text="task.description"></li>
@@ -30,6 +31,7 @@
     let app = new Vue({
       el: '#root',
       data: {
+        newTask: "",
         tasks: [
           {description: "Buy new clothes", completed: true },
           {description: "Go to the shops", completed: false },
@@ -37,6 +39,12 @@
           {description: "Cook dinner", completed: false },
           {description: "Change nappies", completed: false },
         ]
+      },
+      methods: {
+        addTask() {
+          this.tasks.push({description: this.newTask, completed: false});
+          this.newTask = "";
+        }
       },
 
       computed: {
