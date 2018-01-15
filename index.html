@@ -12,9 +12,15 @@
 <body>
   <div id="root" class="container">
     
-  	<message title="Hello World" body="Lorem ipsum bacon."></message>
+  	<modal v-if="showModal" @close="showModal = false">
+  		<p>
+  			Whatever u want!
+  		</p>
 
-  	<message title="Hello Mars" body="Lorem ipsum marcom."></message>
+  	</modal>
+
+  	<button @click="showModal = true">Open Modal</button>
+
 
   </div>
 	
