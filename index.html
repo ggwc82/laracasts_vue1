@@ -11,15 +11,18 @@
 </head>
 <body>
   <div id="root" class="container">
-    
-  	<modal v-if="showModal" @close="showModal = false">
-  		<p>
-  			Whatever u want!
-  		</p>
 
-  	</modal>
-
-  	<button @click="showModal = true">Open Modal</button>
+    <tabs>
+      <tab name="About Us" :selected="true">
+        <h1>This describes who we are and what we are doing.</h1>
+      </tab>
+      <tab name="Our Location">
+        <h1>This describes where we are located.</h1>
+      </tab>
+      <tab name="Our Team">
+        <h1>This describes who are the team members.</h1>
+      </tab>
+    </tabs>
 
 
   </div>
